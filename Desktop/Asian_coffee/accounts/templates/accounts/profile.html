@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 130px;">
+    <div class="card card-profile my-5 mx-auto">
+        <div class="card-body">
+            <h5 class="card-title text-center">Profile</h5>
+            <table class="profile_table mb-4">
+                <tbody>
+                    <tr>
+                        <th class="header">Name</th>
+                        <td class="data">{{ user_data.first_name }} {{ user_data.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <th class="header">Email</th>
+                        <td class="data">{{ user_data.email }}</td>
+                    </tr>
+                    <tr>
+                        <th class="header">Room number</th>
+                        <td class="data">{{ user_data.room_number }}</td>
+                    </tr>
+                    <tr>
+                        <th class="header">Phone number</th>
+                        <td class="data">{{ user_data.tel }}</td>
+                    </tr>
+                    <tr>
+                        <th class="header">Date of join</th>
+                        <td class="data">{{ user_data.created }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="button mx-auto">
+                <a href="{% url 'profile_edit' %}" class="btn btn-lg btn-warning btn-block">Edit</a>
+            </button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load cart_tags %}
+
+{% block content %}
+<div class="container" style="margin-bottom: 30px;">
+    <div style="margin-top: 150px; margin-bottom: 30px;">
+        <h3>Confirm your order</h3>
+    </div>
+    <form method="post" id="payment-form">
+        <div class="row order">
+            <div class="col-md-9">
+                <div class="card px-4">
+                    <div class="card-body px-2 py-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="font-weight-bold">Class room to deliver</p>
+                                <p>Name:{{ user_data.first_name }} {{ user_data.last_name }}</p>
+                                <p>Room Number:{{ user_data.room_number }}</p>
+                                <p>Phone Number:{{ user_data.tel }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="font-weight-bold">Payment Method</p>
+                                {% csrf_token%}
+                                <div class="form-row">
+                                    <div id="card-element"></div>
+                                    <div id="card-errors" role="alert"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center px-2 py-3">
+                        <div class="mb-3">
+                            <button class="btn btn-warning" type="submit">Confirm your order</button>
+                        </div>
+                        <p class="font-weight-bold">Order Detail</p>
+                        <p>Total:${{ order.get_total|changeDis }}</p>
+                        <p>Shipping fee:$0</p>
+                        <hr>
+                        <p class="font-weight-bold text-danger">Charged Fee:${{ order.get_total|changeDis }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
+{% endblock %}

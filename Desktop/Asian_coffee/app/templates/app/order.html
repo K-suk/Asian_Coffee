@@ -1,0 +1,64 @@
+{% extends 'app/base.html' %}
+{% load cart_tags %}
+{% block content %}
+<div class="container">
+    <div style="margin-top: 150px; margin-bottom: 30px;">
+        <h3>Shoppig list</h3>
+    </div>
+    <div class="row order">
+        <div class="col-md-9 mb-5">
+            <div class="card">
+                <div class="card-body px-4 py-3">
+                    {% for order_item in order.items.all %}
+                        <div class="row">
+                            <div class="col-md-3 text-center">
+                                <img src="{{ order_item.item.image.url }}" alt="{{ order_item.item.title }}" class="img-fluid">
+                            </div>
+                            <div class="col-md-6">
+                                <h5>{{ order_item.item.title }}</h5>
+                                <p class="mb-1">
+                                    Quantity:
+                                    <a href="{% url 'removesingleitem' order_item.item.slug %}"><span class="badge badge-warning">-</span></a>
+                                    {{ order_item.quantity }}
+                                    <a href="{% url 'additem' order_item.item.slug %}"><span class="badge badge-warning">+</span></a>
+                                </p>
+                                <a href="{% url 'removeitem' order_item.item.slug %}">
+                                    <span class="badge badge-danger">Delete</span>
+                                </a>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <p>
+                                    Price:
+                                    <span class="text-danger font-weight-bold">
+                                        ${{ order_item.get_total_item_price|changeDis }}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        {% if not forloop.last %}
+                            <hr>
+                        {% endif %}
+    
+                        {% empty %}
+                        <p class="mb-3">Your shopping list is empty</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center px-2 py-3">
+                    {% if order.get_total %}
+                        <p>Total:$<span class="font-weight-bold">{{ order.get_total|changeDis }}</span></p>
+                        <div class="mb-3">
+                            <a href="{% url 'payment' %}" class="btn btn-warning">Go for payment</a>
+                        </div>
+                    {% endif %}
+                    <a href="/" class="btn btn-primary">Keep shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
