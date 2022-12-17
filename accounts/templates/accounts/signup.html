@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+
+{% load widget_tweaks %}
+{% block content %}
+<div class="card card-auth mx-auto" style="margin:150px 0 30px 0;">
+    <div class="card-body">
+        <h5 class="card-title text-center">Signup</h5>
+        <form method="post" class="form-auth">
+            {% csrf_token %}
+            <div class="form-label-group form_wrap form_wrap-2">
+                {% render_field form.first_name class='form-control' placeholder='first_name' %}
+                {% render_field form.last_name class='form-control' placeholder='last_name' %}
+            </div>
+            <div class="form-label-group">
+                {% render_field form.email class='form-control' placeholder='email' %}
+            </div>
+            <div class="form-label-group">
+                {% render_field form.password1 class='form-control' placeholder='password' %}
+            </div>
+            <div class="form-label-group">
+                {% render_field form.password2 class='form-control' placeholder='password(confirm)' %}
+            </div>
+            <div class="button mx-auto">
+                <button class="btn btn-lg btn-primary btn-block mx-auto" type="submit">Signup</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

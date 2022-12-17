@@ -1,0 +1,142 @@
+{% extends 'app/base.html' %}
+{% load cart_tags %}
+{% load static %}
+{% block content %}
+<head>
+    <style type="text/css">
+        #header {background: transparent;}
+    </style>
+</head>
+<!-- start banner Area -->
+<section class="banner-area" id="home">	
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-start">
+            <div class="banner-content col-lg-7">
+                <h6 class="text-white text-uppercase">Now you can feel the Energy</h6>
+                <h1>
+                    Get over the sleepy class with coffee!				
+                </h1>
+                <a href="https://chatbot.page/55b8I8" class="primary-btn text-uppercase"　target="_blank">Buy Now</a>
+            </div>											
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->	
+
+<!-- Start video-sec Area -->
+<section class="video-sec-area pb-100 pt-40" id="about">
+    <div class="container">
+        <div class="row justify-content-start align-items-center">
+            <div class="col-lg-6 video-right justify-content-center align-items-center d-flex">
+                <div class="overlay"></div>
+            </div>						
+            <div class="col-lg-6 video-left" style="padding-left: 10%;">
+                <h6>The best quality coffee</h6>
+                <h1>We are the only <br>
+                coffee place in Bayridge</h1>
+                <p><span>We are here to make you the best quality coffee</span></p>
+                <p>
+                    Most of time, class right after lunch is kind of sleepy, but you can't fall asleep...Yes, we understand cuz we are some of them, so now let's have our coffee to stay awake during the class!<br>you don't even have to walk to get our coffee, we'll deliver you coffee. 
+                    <a href="https://www.tiktok.com/@emleglol/video/7078657297454533893?is_from_webapp=v1&item_id=7078657297454533893&web_id=7177370736059221506" target="_blank">And, this is promotioin video!</a>
+                </p>
+            </div>
+        </div>
+    </div>	
+</section>
+<!-- End video-sec Area -->
+
+<!-- Start menu Area -->
+<section class="menu-area section-gap" id="coffee">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-10">
+                <div class="title text-center">
+                    <h1 class="mb-10">What kind of Coffee we serve for you</h1>
+                    <p>Who are in extremely love with eco friendly system.</p>
+                </div>
+            </div>
+        </div>						
+        <div class="row">
+            {% for item in item_data %}
+            <div class="col-lg-4">
+                <div class="single-menu">
+                    <div class="title-div justify-content-between d-flex">
+                        <h4>{{ item.title }}</h4>
+                        <p class="price float-right">
+                            ${{ item.price|changeDis }}
+                        </p>
+                    </div>
+                    <p>
+                        {{ item.description }}
+                    </p>
+                    <a href="{% url 'product' item.slug %}" class="stretched-link"></a>							
+                </div>
+            </div>
+            {% endfor %}													
+        </div>
+    </div>	
+</section>
+<!-- End menu Area -->
+
+<!-- Start video-sec Area -->
+<section class="video-sec-area pb-100 pt-40" id="way">
+    <div class="container">
+        <div class="row justify-content-start align-items-center">					
+            <div class="col-lg-6 video-left">
+                <h6>We got you bro, men men bro!</h6>
+                <h1>How to buy coffee</h1>
+                <p><span>We will explain you how to buy our coffee here</span></p>
+                <p>
+                    If you can't figure out how to use this website, it's fine! we got you!<br> First of all, jump to the order bot through the BUY HERE in the navbar <br>or Buy Now button in the banner menu. And make your order by order bot.<br>After making your order, send the same amount of money as your order through paypal address, which is "Kosuke Kumamoto". Right after I check the order with paypal money transfer, we will deliver you coffee!
+                </p>
+            </div>
+            <div class="col-lg-6 video-right2 justify-content-center align-items-center d-flex">
+                <div class="overlay"></div>
+            </div>	
+        </div>
+    </div>	
+</section>
+<!-- End video-sec Area -->
+
+<!-- Start gallery Area -->
+<section class="gallery-area section-gap" id="gallery">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-10">
+                <div class="title text-center">
+                    <h1 class="mb-10">Asian Coffee memorial gallery</h1>
+                    <p>If you want to post your memory with asian coffee, contact me through Instagram</p>
+                </div>
+            </div>
+        </div>						
+        <div class="row">
+            <div class="col-lg-4">
+                <a href="img/IMG_4217.jpg" class="img-pop-home">
+                    <img class="img-fluid" src="{% static 'img/IMG_4217.jpg' %}" alt="" style="width: 350px; height: 272px;">
+                </a>	
+                <a href="img/IMG_4219.jpg" class="img-pop-home">
+                    <img class="img-fluid" src="{% static 'img/IMG_4219.jpg' %}" alt="" style="width: 350px; height: 408px;">
+                </a>	
+            </div>
+            <div class="col-lg-8">
+                <a href="img/IMG_4221.jpg" class="img-pop-home">
+                    <img class="img-fluid" src="{% static 'img/IMG_4221.jpg' %}" alt="" style="width: 730px; height: 409px;">
+                </a>	
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a href="img/IMG_4218.jpg" class="img-pop-home">
+                            <img class="img-fluid" src="{% static 'img/IMG_4465.jpg' %}" alt="" style="width: 350px; height: 272px;">
+                        </a>	
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="img/IMG_4464.jpg" class="img-pop-home">
+                            <img class="img-fluid" src="{% static 'img/IMG_4466.jpg' %}" alt="" style="width: 350px; height: 272px;">
+                        </a>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
+</section>
+<!-- End gallery Area -->
+{% endblock %}

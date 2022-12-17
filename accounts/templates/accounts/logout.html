@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="card card-auth mx-auto" style="margin:150px 0 30px 0;">
+    <div class="card-body">
+        <p class="card-title text-center">Are you sure do you want to logout</p>
+        <form method="post" class="form-auth">
+            {% csrf_token %}
+            <div class="button mx-auto">
+                <button class="btn btn-lg btn-warning btn-block mx-auto" type="submit">Logout</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
